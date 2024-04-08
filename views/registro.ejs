@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <style>
+        /* Estilos para el cuerpo de la página */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d1a26; /* Azul oscuro profundo */
+            color: #fff; /* Texto blanco */
+        }
+
+        /* Estilos para el título */
+        h1 {
+            color: #ffcc00; /* Amarillo */
+            text-align: center;
+        }
+
+        /* Estilos para el formulario */
+        form {
+            background-color: #f5f5dc; /* Blanco tipo hueso */
+            max-width: 300px; /* Anchura máxima del formulario */
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos para los campos de entrada */
+        input[type="number"],
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 22px); /* Ancho del 100% menos el espacio para el borde y el relleno */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* El tamaño total del elemento incluye el borde y el relleno */
+            color: #333; /* Cambia el color del texto a gris oscuro */
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Cambia la fuente del texto */
+        }
+
+        /* Estilos para el campo de cédula */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Estilos para el botón de enviar */
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #00cc44; /* Verde */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #009933; /* Verde más oscuro al pasar el ratón */
+        }
+
+        /* Estilos para el mensaje de error */
+        #errorMensaje {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para los labels */
+        label {
+            color: #333; /* Cambia el color del texto a gris oscuro */
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro de usuario</h1>
+    <form action="/validar" method="post" id="registroForm" onsubmit="return validarFormulario()">
+        <div id="errorMensaje"></div>
+        <label for="ced">Cedula:</label>
+        <input type="number" name="ced" id="ced"> <br> <br>
+        <label for="nom">Nombres:</label>
+        <input type="text" name="nom" id="nom"> <br> <br>
+        <label for="apell">Apellido:</label>
+        <input type="text" name="apell" id="apell"> <br> <br>
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" id="correo"> <br> <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password"> <br> <br>
+        <input type="submit" value="Registrar">
+    </form>
+
+    <script>
+        function validarFormulario() {
+            var cedula = document.getElementById("ced").value;
+            var nombre = document.getElementById("nom").value;
+            var apellido = document.getElementById("apell").value;
+            var correo = document.getElementById("correo").value;
+            var password = document.getElementById("password").value;
+
+            if (cedula === "" || nombre === "" || apellido === "" || correo === "" || password === "") {
+                var errorMensaje = document.getElementById("errorMensaje");
+                errorMensaje.innerText = "Por favor, complete todos los campos.";
+                return false; // Impide que el formulario se envíe
+            }
+
+            return true; // Permite que el formulario se envíe
+        }
+    </script>
+</body>
+</html>
+
